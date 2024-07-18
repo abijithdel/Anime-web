@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}HOME{% endblock title %}
+{% block main %}
+<h1 class="text-center">Movies</h1>
+<div class="container mt-4">
+    <div class="row">
+      {% for x in Movies %}
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="thumbnail">
+          <a href="{% url "movies_vid" x.id %}"><img src="{{x.mimage.url}}" alt="Thumbnail" class="img-fluid"></a>
+          <div class="pt-2">
+            <h5 class="mb-1">{{x.mtitle}}</h5>
+            <a href="{% url "category_sp" x.mcategory %}"><p class="text-muted mb-1">{{x.mcategory}}</p></a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+</div>
+{% endblock main %}
