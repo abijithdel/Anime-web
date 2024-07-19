@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}{% endblock title %}
+{% block main %}
+
+<div class='container'>
+    <div class='row'>
+        {% if Content_dataa %}
+
+        {% for x in Content_dataa %}
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="thumbnail">
+              <a href="{% url "video" x.id %}"><img src="{{x.image.url}}" alt="Thumbnail" class="img-fluid"></a>
+              <div class="pt-2">
+                <h5 class="mb-1">{{x.title}}</h5>
+                <a href="{% url "category_sp" x.category %}"><p class="text-muted mb-1">{{x.category}}</p></a>
+              </div>
+            </div>
+        </div>
+        {% endfor %}
+    
+    
+       {% endif %}
+    
+       {% if animes_data %}
+    
+        {% for x in animes_data %}
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="thumbnail">
+              <a href="{% url "anime_vid" x.id %}"><img src="{{x.aimage.url}}" alt="Thumbnail" class="img-fluid"></a>
+              <div class="pt-2">
+                <h5 class="mb-1">{{x.atitle}}</h5>
+                <a href="{% url "category_sp" x.acategory %}"><p class="text-muted mb-1">{{x.acategory}}</p></a>
+              </div>
+            </div>
+        </div>
+        {% endfor %}
+    
+    
+       {% endif %}
+
+       {% if Movies_data %}
+    
+       {% for x in Movies_data %}
+       <div class="col-lg-4 col-md-6 mb-4">
+           <div class="thumbnail">
+             <a href="{% url "movies_vid" x.id %}"><img src="{{x.mimage.url}}" alt="Thumbnail" class="img-fluid"></a>
+             <div class="pt-2">
+               <h5 class="mb-1">{{x.mtitle}}</h5>
+               <a href="{% url "category_sp" x.mcategory %}"><p class="text-muted mb-1">{{x.mcategory}}</p></a>
+             </div>
+           </div>
+       </div>
+       {% endfor %}
+   
+   
+      {% endif %}
+    </div>
+</div>
+
+{% endblock main %}

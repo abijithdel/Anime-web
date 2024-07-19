@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from . models import Category,Content,animes,Movies
+from django.db.models import Q
+
 # Create your views here.
 
 
@@ -47,6 +49,17 @@ def category_one(req,foo):
     category_name = Category.objects.get(name = foo)
     filt_video = Content.objects.filter(category = category_name)
     return render(req,'core/category/one_category.html',{'Category':Categorys ,'Fvideo':filt_video,'category_name':category_name})
+
+def search(req):
+    search_data = []
+    if req.POST:
+        data = req.POST.get('search')
+        Content_data = Content.objects.filter(title__icontains = data)
+        animes_data = animes.objects.filter(atitle__icontains = data)
+        Movies_data = Movies.objects.filter(mtitle__icontains = data)
+
+        return render(req,'search.html',{'Content_dataa': Content_data,'animes_data':animes_data,'Movies_data':Movies_data} )
+    return render(req,'search.html')
 
 
     

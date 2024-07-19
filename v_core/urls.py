@@ -10,4 +10,5 @@ urlpatterns = [
     path('category/<str:foo>',views.category_one, name='category_sp'),
     path('animes/<pk>',views.anime_video, name='anime_vid'),
     path('movies/<pk>',views.movies_video, name='movies_vid'),
+    path('search/',views.search, name='search'),
 ]

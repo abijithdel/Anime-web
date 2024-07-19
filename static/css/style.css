@@ -6,6 +6,19 @@ body{
     background-color: rgb(15, 27, 51);
     color: white;
 }
+
+
+/* search bar */
+.search-bar{
+    width: 50%;
+}
+@media only screen and (max-width: 768px) {
+    .search-bar{
+        width: 90%;
+    }
+
+}
+
 /* thumbnail css */
 
 .thumbnail {
@@ -40,7 +53,7 @@ body{
     color: red;
 }
 .nav-color{
-    background-color: rgb(13, 25, 49);
+    background-color: rgb(15, 20, 31);
 }
 .navbar-nav a:hover{
     background-color: rgb(41, 66, 114);

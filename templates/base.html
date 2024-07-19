@@ -9,7 +9,7 @@
     <title>{% block title %}{% endblock title %}</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light nav-color border-bottom">
+    <nav class="navbar navbar-expand-lg navbar-light nav-color">
         <div class="container-fluid">
             <a href="#"><h2 class="text-white sphost-title title">Ecart</h2></a>
             <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,17 +37,22 @@
                           {% endfor %}
                         </ul>
                     </li>
-                    <li class="nav-item"> 
-                        <a class="nav-link text-white" href="#">ACCOUNT</a>
-                    </li>
-                    <li class="nav-item"> 
-                        <a class="nav-link text-white" href="">ADMIN</a>
-                    </li>
                 </ul>
             </div>
         </div>
     </nav>
+
+    <div class="search-main-div ">
+        <div class="container search-bar mt-3 mb-3">
+            <form action="/search/" method="post" class="d-flex justify-content-center"> 
+                {% csrf_token %}
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                <button class="btn btn-light" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
     
+
     {% block main %}{% endblock main %}
 
     
