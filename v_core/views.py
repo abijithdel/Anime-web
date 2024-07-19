@@ -15,7 +15,7 @@ def home(req):
 
 def anime(req):
     Categorys = Category.objects.all() 
-    Category_name = Category.objects.get(name = 'Amine') 
+    Category_name = Category.objects.get(name = 'Anime') 
     filt_cvideo = Content.objects.filter(category = Category_name)
     return render(req,'core/animes.html',{'Category':Categorys,'filt_cvideo':filt_cvideo})
 
