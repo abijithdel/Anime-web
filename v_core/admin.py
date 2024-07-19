@@ -4,5 +4,3 @@ from . models import Category,Content,animes,Movies
 
 admin.site.register(Category)
 admin.site.register(Content)
-admin.site.register(animes)
-admin.site.register(Movies)

@@ -8,7 +8,7 @@
       {% for x in Fvideo %}
       <div class="col-lg-4 col-md-6 mb-4">
         <div class="thumbnail">
-          <a href="{% url "video" x.id %}"><img src="{{x.image.url}}" alt="Thumbnail" class="img-fluid"></a>
+          <a href="{% url "video" x.id x.category %}"><img src="{{x.image.url}}" alt="Thumbnail" class="img-fluid"></a>
           <div class="pt-2">
             <h5 class="mb-1">{{x.title}}</h5>
           </div>

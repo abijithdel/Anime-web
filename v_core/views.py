@@ -8,20 +8,23 @@ from django.db.models import Q
 def home(req):
     Categorys = Category.objects.all()
     Contents = Content.objects.all()
+    count = Category.objects.count()
     return render(req,'index.html',{'Category':Categorys, 'Content':Contents})
 
 
 
 def anime(req):
     Categorys = Category.objects.all() 
-    ani = animes.objects.all()
-    return render(req,'core/animes.html',{'Category':Categorys,'animes':ani})
+    Category_name = Category.objects.get(name = 'Amine') 
+    filt_cvideo = Content.objects.filter(category = Category_name)
+    return render(req,'core/animes.html',{'Category':Categorys,'filt_cvideo':filt_cvideo})
 
 
 def movies(req):
     Categorys = Category.objects.all()
-    mvi = Movies.objects.all()
-    return render(req,'core/movies.html',{'Category':Categorys,'Movies':mvi})
+    Category_name = Category.objects.get(name = 'Movies')
+    filt_cvideo = Content.objects.filter(category = Category_name)
+    return render(req,'core/movies.html',{'Category':Categorys,'filt_cvideo':filt_cvideo})
 
 
 def category(req):
@@ -29,20 +32,14 @@ def category(req):
     return render(req,'core/category/category.html',{'Category':Categorys})
 
 
-def video(req,pk):
+def video(req,foo,pk):
     Categorys = Category.objects.all()
     Contents = Content.objects.get(id=pk)
-    return render(req,'core/video.html',{'Category':Categorys,'Content':Contents})
+    category_vid = Category.objects.get(name=foo)
+    category_video_page = Content.objects.filter(category=category_vid)
+    return render(req,'core/video.html',{'Category':Categorys,'Content':Contents,'category_video_page':category_video_page})
 
-def anime_video(req,pk):
-    Categorys = Category.objects.all()
-    mvi_vie = animes.objects.get(id=pk)
-    return render(req,'core/anime_video.html',{'Category':Categorys,'Content':mvi_vie})
 
-def movies_video(req,pk):
-    Categorys = Category.objects.all()
-    ani_vie = Movies.objects.get(id=pk)
-    return render(req,'core/movies_video.html',{'Category':Categorys,'Content':ani_vie})
 
 def category_one(req,foo):
     Categorys = Category.objects.all()
@@ -51,14 +48,11 @@ def category_one(req,foo):
     return render(req,'core/category/one_category.html',{'Category':Categorys ,'Fvideo':filt_video,'category_name':category_name})
 
 def search(req):
-    search_data = []
     if req.POST:
         data = req.POST.get('search')
         Content_data = Content.objects.filter(title__icontains = data)
-        animes_data = animes.objects.filter(atitle__icontains = data)
-        Movies_data = Movies.objects.filter(mtitle__icontains = data)
-
-        return render(req,'search.html',{'Content_dataa': Content_data,'animes_data':animes_data,'Movies_data':Movies_data} )
+        Category_data = Category.objects.filter(name__icontains = data)
+        return render(req,'search.html',{'Content_dataa': Content_data,'Category_data':Category_data} )
     return render(req,'search.html')
 
 

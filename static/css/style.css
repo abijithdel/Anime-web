@@ -75,25 +75,8 @@ body{
 }
 
 /* Video Page  */
-.video-div{
-    margin: 10px;
-   width: 900px;
+.redi{
+    border-radius: 10px;
 }
-.video-div video{
-   width: 900px;
-   border-radius: 10px;
-}
-@media only screen and (max-width: 768px) {
-    .video-div{
-        margin: 1px;
-       width: 100%;
-    }
-    .video-div video{
-        width: 100%;
-        border-radius: 8px;
-     }
-}
-.video-right-bar video{
-    width: 50%;
-    height: 300px;
-}
+/* footer page  */
+
