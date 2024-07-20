@@ -1,3 +1,5 @@
+![web_img](https://github.com/user-attachments/assets/9e2ad6cc-0cf4-42eb-98a0-38810168f45e)
+
 # Django Video Uploading Website
 
 ## Features
@@ -15,6 +17,7 @@
 ## Install Dependencies
 Make sure you have **pip** and **virtualenv** installed. Then run:
 ```
+
 virtualenv venv
 source venv/bin/activate
 pip install -r requirements.txt
