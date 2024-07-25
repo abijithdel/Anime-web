@@ -15,16 +15,14 @@ def home(req):
 
 def anime(req):
     Categorys = Category.objects.all() 
-    Category_name = Category.objects.get(name = 'Anime') 
-    filt_cvideo = Content.objects.filter(category = Category_name)
-    return render(req,'core/animes.html',{'Category':Categorys,'filt_cvideo':filt_cvideo})
+    anime_data = Content.objects.filter(title__icontains = 'anime')
+    return render(req,'core/animes.html',{'Category':Categorys,'anime_data':anime_data})
 
 
 def movies(req):
     Categorys = Category.objects.all()
-    Category_name = Category.objects.get(name = 'Movies')
-    filt_cvideo = Content.objects.filter(category = Category_name)
-    return render(req,'core/movies.html',{'Category':Categorys,'filt_cvideo':filt_cvideo})
+    movie_data = Content.objects.filter(title__icontains = 'movie')
+    return render(req,'core/movies.html',{'Category':Categorys,'movie_data':movie_data})
 
 
 def category(req):
